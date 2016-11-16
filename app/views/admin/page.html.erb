@@ -1,0 +1,12 @@
+<h1>Posts Approval</h1>
+<% @posts.each do |post| %>
+  <p class ="post-title"><%= post.title %></p>
+  <div class = "post-group">
+  <p><%= post.summary%></p>
+  <p><%= post.resource_type%></p>
+  <p><%= link_to post.file_url,post.file_url,target: "_blank"%></p>
+  <p><%= post.user.email%></p>
+  <p><%= post.created_at.strftime("%b %d,%Y")%></p>
+  <p><%= link_to 'Aproove',admin_approved_path(post: post), method: :post%></p>
+</div>
+<% end %>

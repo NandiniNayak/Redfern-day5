@@ -1,23 +1,21 @@
 <p id="notice"><%= notice %></p>
 <% @posts.each do |post| %>
-<p class ="post-title"><%= post.title %></p>
-<div class = "post-group">
-<p><%= post.summary%></p>
-<p><%= post.resource_type%></p>
-<p><%= link_to post.file_url,post.file_url,target: "_blank"%></p>
-<p><%= post.user.email%></p>
-<p><%= post.created_at.strftime("%b %d,%Y")%></p>
-  <% if current_user %>
-   <%=link_to like_post_path(post), method: :put do%>
-     <%= current_user.voted_as_when_voted_for(post) == true ? icon("heart") : icon("heart-o") %>
-   <% end %>
-   <% else %>
-       <%= icon("heart-o") %>
-   <% end %>
-</div>
-<% end %>
-
-
-
+    <% if (post.approved == true)%>
+      <p class ="post-title"><%= post.title %></p>
+      <div class = "post-group">
+      <p><%= post.summary%></p>
+      <p><%= post.resource_type%></p>
+      <p><%= link_to post.file_url,post.file_url,target: "_blank"%></p>
+      <p><%= post.user.email%></p>
+      <p><%= post.created_at.strftime("%b %d,%Y")%></p>
+        <% if current_user %>
+         <%=link_to like_post_path(post), method: :put do%>
+           <%= current_user.voted_as_when_voted_for(post) == true ? icon("heart") : icon("heart-o") %>
+         <% end %>
+         <% else %>
+             <%= icon("heart-o") %>
+         <% end %>
+      </div>
+  <% end %>
+  <% end %>
 <%= link_to "Add Post", new_post_path(subject_id: @subject.id),class: "btn btn-primary"%>
-

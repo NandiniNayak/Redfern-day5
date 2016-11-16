@@ -1,8 +1,10 @@
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
 
+
   # GET /subjects
   # GET /subjects.json
+
   def index
     @subjects = Subject.where(year_group: params[:year])
   end
@@ -67,6 +69,7 @@ class SubjectsController < ApplicationController
     def set_subject
       @subject = Subject.find(params[:id])
     end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subject_params

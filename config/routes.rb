@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'admin/page'
+  post 'admin/approved'
+
   resources :posts do
     member do
       put "like", to: "posts#vote"
